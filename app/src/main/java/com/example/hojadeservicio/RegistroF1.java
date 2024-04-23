@@ -2,16 +2,21 @@ package com.example.hojadeservicio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,14 +25,33 @@ import java.util.Locale;
 
 public class RegistroF1 extends AppCompatActivity {
 
+    String[] items = {"Facultad de Informatica","Facultad de Derecho","Facultad de Psicologia","Facultad de Ciencias Naturales"};
+    AutoCompleteTextView autoCompleteTxt;
+    ArrayAdapter<String> adapterItems;
     Button btnNext1, bfecha,bhora;
     EditText efecha,ehora;
     private int dia, mes, ano, hora, minutos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_f1);
+
+        autoCompleteTxt = findViewById(R.id.auto_complete_txt);
+
+        adapterItems = new ArrayAdapter<String>(this,R.layout.list_item,items);
+        autoCompleteTxt.setAdapter(adapterItems);
+        autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = String.valueOf(parent.getItemIdAtPosition(position));
+                Toast.makeText(getApplicationContext(),"Facultad"+item,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
         bfecha= (Button) findViewById (R.id.bFecha) ;
         bhora= (Button) findViewById (R.id.bHora);
         efecha=(EditText) findViewById (R.id.eFecha);
