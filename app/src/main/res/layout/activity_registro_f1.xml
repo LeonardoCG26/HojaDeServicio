@@ -141,28 +141,11 @@
         android:hint="Telefono"
         android:inputType="number" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:hint="Problematica" />
-
     <Button
         android:id="@+id/btnNext1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Siguiente" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
 </LinearLayout>
